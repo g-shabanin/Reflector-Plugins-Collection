@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Review>
+  <Annotation 
+    CodeUri="http://somepiececodeuri" 
+    CreatedDate="long time ago" 
+    CreateBy="marc" 
+    ChangedBy="paul"
+    ChangedDate="monday">
+    <Change 
+      ChangedBy="paul" 
+      ChangeDate="monday">
+      <Comment>
+        <![CDATA[I removed it]]>
+      </Comment>
+      <ChangedField Name="Resolution" value="Resolved" />
+      <ChangedField Name="AssignedTo" value="marc" />
+    </Change>
+  </Annotation>
+</Review>
