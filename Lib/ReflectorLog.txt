@@ -1,0 +1,78 @@
+
+[3360] [4/27/2007 9:54:52 PM] >> ParseMethodBody - Type:MainCase, Start Method:CecilCase.MainCase.CallcAccountRun() : Void
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:0
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:nop
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:115
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:newobj
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:10
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:stloc.0
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:6
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:ldloc.0
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:111
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:callvirt
+
+[3360] [4/27/2007 9:54:52 PM] MethodData :: AddNewCall
+
+[3360] [4/27/2007 9:54:52 PM] MethodCallInfo :: StartMethod:CecilCase.MainCase.CallcAccountRun() : Void TypeName: MainCase, MethodName: Run() : Void, MethodCallType: cAccount, MethodCallName: Run() : Void, TargetMethodAssembly:
+
+[3360] [4/27/2007 9:54:52 PM] >> ParseMethodBody - Type:cAccount, Start Method:CecilCase.MainCase.CallcAccountRun() : Void
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:0
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:nop
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:114
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:ldstr
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:40
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:call
+
+[3360] [4/27/2007 9:54:52 PM] MethodData :: AddNewCall
+
+[3360] [4/27/2007 9:54:52 PM] MethodCallInfo :: StartMethod:CecilCase.MainCase.CallcAccountRun() : Void TypeName: cAccount, MethodName: WriteLine(String) : Void, MethodCallType: Console, MethodCallName: WriteLine(String) : Void, TargetMethodAssembly:
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:0
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:nop
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:42
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:ret
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:0
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:nop
+
+[3360] [4/27/2007 9:54:52 PM] >>Instruction code to convert:42
+
+[3360] [4/27/2007 9:54:52 PM] Converted Instruction:ret
+
+[3360] [4/27/2007 9:54:52 PM] >> Found method:MethodCallInfo :: StartMethod:CecilCase.MainCase.CallcAccountRun() : Void TypeName: MainCase, MethodName: Run() : Void, MethodCallType: cAccount, MethodCallName: Run() : Void, TargetMethodAssembly:
+
+[3360] [4/27/2007 9:54:52 PM] >> Found method:MethodCallInfo :: StartMethod:CecilCase.MainCase.CallcAccountRun() : Void TypeName: cAccount, MethodName: WriteLine(String) : Void, MethodCallType: Console, MethodCallName: WriteLine(String) : Void, TargetMethodAssembly:
+
+[3360] [4/27/2007 9:54:52 PM] Process Name:C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\RunPlot.bat
+
+[3360] [4/27/2007 9:54:52 PM] Arguments: "C:\Program Files\GnuWin32\bin\pic2plot.exe" svg C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\tempseq.pic C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\seq.svg
+
+[3360] [4/27/2007 9:54:53 PM] Standard Output:
+C:\Code\LiveSequence\Src\SequenceViz\bin\Debug
+>"C:\Program Files\GnuWin32\bin\pic2plot.exe" -T svg C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\tempseq.pic  1>C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\seq.svg 
+
+
+[3360] [4/27/2007 9:54:53 PM] Standard Error:libplot error: output stream jammed
+
+
+[3360] [4/27/2007 9:54:53 PM] Trying to load Image:C:\Code\LiveSequence\Src\SequenceViz\bin\Debug\seq.svg

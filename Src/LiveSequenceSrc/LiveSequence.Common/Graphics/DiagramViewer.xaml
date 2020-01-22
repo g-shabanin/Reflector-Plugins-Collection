@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="LiveSequence.Common.Graphics.DiagramViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LiveSequence.Common.Graphics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="White">
+
+  <UserControl.Resources>
+
+    <!-- animation when zoom area fades in -->
+    <Storyboard x:Key="FadeInAnimation">
+      <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.9" Duration="0:0:0.5" />
+    </Storyboard>
+
+    <!-- animation when zoom area fades out -->
+    <Storyboard x:Key="FadeOutAnimation">
+      <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.3" Duration="0:0:0.5" />
+    </Storyboard>
+
+    <!-- scroll viewer -->
+    <Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
+      <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+      <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+    </Style>
+
+    <!-- zoom area -->
+    <Style x:Key="ZoomAreaStyle" TargetType="{x:Type StackPanel}">
+      <Setter Property="Opacity" Value=".3" />
+      <Setter Property="HorizontalAlignment" Value="Right" />
+      <Setter Property="VerticalAlignment" Value="Bottom" />
+      <Setter Property="Margin" Value="15" />
+      <Style.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+          <EventTrigger.Actions>
+            <BeginStoryboard Storyboard="{StaticResource FadeInAnimation}" />
+          </EventTrigger.Actions>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+          <EventTrigger.Actions>
+            <BeginStoryboard Storyboard="{StaticResource FadeOutAnimation}" />
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <!-- zoom slider -->
+    <Style x:Key="ZoomSliderStyle" TargetType="{x:Type Slider}">
+      <Setter Property="Width" Value="20" />
+      <Setter Property="Height" Value="70" />
+      <Setter Property="Cursor" Value="Arrow" />
+      <Setter Property="Orientation" Value="Vertical" />
+      <Setter Property="TickPlacement" Value="None" />
+      <Setter Property="SmallChange" Value="0.1" />
+      <Setter Property="LargeChange" Value=".25" />
+      <Setter Property="Maximum" Value="10" />
+      <Setter Property="Minimum" Value=".1" />
+      <Setter Property="IsSnapToTickEnabled" Value="False" />
+    </Style>
+
+    <!-- zoom label -->
+    <Style x:Key="ZoomLabelStyle" TargetType="{x:Type Label}">
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!-- slider border -->
+    <Style x:Key="SliderBorderStyle" TargetType="{x:Type Border}">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="CornerRadius" Value="10" />
+      <Setter Property="Background" Value="#80000000" />
+      <Setter Property="BorderBrush" Value="#80ffffff" />
+      <Setter Property="Padding" Value="7" />
+    </Style>
+
+    <ControlTemplate x:Key="PrimaryNodeTemplate" TargetType="{x:Type local:DiagramSequenceNode}">
+      <Border Height="25" Width="120" Margin="3,2,3,2" Background="White">
+        <Grid>
+          <Rectangle Stroke="#FF808080" StrokeThickness="1" SnapsToDevicePixels="True" />
+          <Canvas Name="Node" Height="22" Width="114">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+              <TextBlock Name="nodeLabel" Margin="0,2,0,2" Text="{Binding Path=NodeLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="9" Background="Transparent" TextAlignment="Center" SnapsToDevicePixels="True" />
+              <Path Stroke="Black" StrokeThickness="1" Data="M4.0,1.0L110.0,1.0" SnapsToDevicePixels="True" />
+            </StackPanel>
+          </Canvas>
+        </Grid>
+      </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MessageNodeTemplate" TargetType="{x:Type local:DiagramSequenceNode}">
+      <Canvas Height="40" Width="126">
+        <Path Stroke="Gray" StrokeThickness="1" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" StrokeDashCap="Flat" StrokeDashOffset="0" StrokeDashArray="2.3 2.3" StrokeMiterLimit="4" Data="M60.0,0.0L60.0,40.0" SnapsToDevicePixels="True" />
+      </Canvas>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="BlockedNodeTemplate" TargetType="{x:Type local:DiagramModelNode}">
+      <Border Height="50" HorizontalAlignment="Center" Margin="10,0,10,0" VerticalAlignment="Top" BorderThickness="2,2,2,2">
+        <Border.Background>
+          <LinearGradientBrush>
+            <GradientStop Color="{Binding Path=NodeColor}" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+          </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+          <Rectangle Stroke="#FF808080" StrokeThickness="1" SnapsToDevicePixels="True" />
+          <Grid Margin="2,2,2,2">
+            <Canvas Name="Node" Height="22" Width="{Binding Path=NodeWidth}" MinWidth="140" >
+              <StackPanel Orientation="Vertical">
+                <TextBlock Name="nodeLabel" Margin="8,-5,10,0" Text="{Binding Path=NodeLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="9" FontWeight="Bold" Background="Transparent" SnapsToDevicePixels="True" />
+                <TextBlock Name="nodeSubLabel" Margin="8,2,10,0" Text="{Binding Path=NodeSubLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="7" Background="Transparent" SnapsToDevicePixels="True" />
+              </StackPanel>
+            </Canvas>
+          </Grid>
+        </Grid>
+      </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RoundedNodeTemplate" TargetType="{x:Type local:DiagramModelNode}">
+      <StackPanel Orientation="Vertical">
+        <Canvas>
+          <local:DiagramSupplement x:Name="InterfaceList" SnapsToDevicePixels="True" />
+        </Canvas>
+        <Border Height="50" HorizontalAlignment="Center" Margin="10,0,10,0" VerticalAlignment="Top" BorderThickness="2,2,2,2" CornerRadius="10,10,10,10" >
+          <Border.Background>
+            <LinearGradientBrush>
+              <GradientStop Color="{Binding Path=NodeColor}" Offset="0" />
+              <GradientStop Color="White" Offset="1" />
+            </LinearGradientBrush>
+          </Border.Background>
+          <Grid>
+            <Rectangle Stroke="#FF808080" StrokeDashArray="{Binding Path=NodeBorderStyle}" StrokeThickness="{Binding Path=NodeBorderThickness}" RadiusX="10" RadiusY="10" SnapsToDevicePixels="True" />
+            <Grid Margin="2,2,2,2" >
+              <Canvas Name="Node" Height="22" Width="{Binding Path=NodeWidth}" MinWidth="140" >
+                <StackPanel Orientation="Vertical">
+                  <TextBlock Name="nodeLabel" Margin="8,-5,10,0" Text="{Binding Path=NodeLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="9" FontWeight="Bold" FontStyle="{Binding Path=NodeLabelStyle}" Background="Transparent" SnapsToDevicePixels="True" />
+                  <TextBlock Name="nodeSubLabel" Margin="8,2,10,0" Text="{Binding Path=NodeSubLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="7" Background="Transparent" SnapsToDevicePixels="True" />
+                  <StackPanel Orientation="Horizontal" Visibility="{Binding Path=NodeHasBase}" Margin="8,2,10,0" >
+                    <Path Stroke="Black" StrokeThickness="1" Data="M0.0,4.0L4.0,4.0" SnapsToDevicePixels="True" />
+                    <Path Stroke="Black" StrokeThickness="1" Fill="DarkGray" Data="M0.0,2.0L3.464,4.0L0.0,6.0Z" SnapsToDevicePixels="True" />
+                    <TextBlock Name="nodeBaseLabel" Margin="3,0,10,0" Text="{Binding Path=NodeBaseLabel}" Foreground="Black" FontFamily="Segoe UI" FontSize="7" Background="Transparent" SnapsToDevicePixels="True" />
+                  </StackPanel>
+                </StackPanel>
+              </Canvas>
+            </Grid>
+          </Grid>
+        </Border>
+      </StackPanel>
+    </ControlTemplate>
+  </UserControl.Resources>
+
+  <Grid>
+    <ScrollViewer x:Name="ScrollViewer" Style="{StaticResource ScrollViewerStyle}">
+      <Grid x:Name="Grid">
+        <local:Diagram x:Name="Diagram" />
+      </Grid>
+    </ScrollViewer>
+
+    <!-- zoom -->
+    <StackPanel Style="{StaticResource ZoomAreaStyle}" x:Name="ZoomSliderPanel">
+      <Border Style="{StaticResource SliderBorderStyle}">
+        <StackPanel>
+          <Slider Style="{StaticResource ZoomSliderStyle}" x:Name="ZoomSlider" />
+          <Label Style="{StaticResource ZoomLabelStyle}">Zoom</Label>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Grid>
+</UserControl>

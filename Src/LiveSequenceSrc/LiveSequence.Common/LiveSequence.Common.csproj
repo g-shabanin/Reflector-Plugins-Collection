@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0BB41CBD-1862-443E-8587-BC3EFFD54F26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LiveSequence.Common</RootNamespace>
+    <AssemblyName>LiveSequence.Common</AssemblyName>
+    <OutputPath>..\..\..\Build\$(Configuration)\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\..\Build\$(Configuration)\Intermediate\$(AssemblyName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>..\..\..\obj\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
+    <!-- <TargetFrameworkVersion>v2.0</TargetFrameworkVersion> -->
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ContextBase.cs" />
+    <Compile Include="Context\ContextHelper.cs" />
+    <Compile Include="Context\ContextParameters.cs" />
+    <Compile Include="Context\ContextScope.cs" />
+    <Compile Include="Context\DiagramContext.cs" />
+    <Compile Include="Context\EmptyContextParameters.cs" />
+    <Compile Include="Context\ModelContext.cs" />
+    <Compile Include="Context\ModelContextScope.cs" />
+    <Compile Include="Context\PrintContext.cs" />
+    <Compile Include="Context\PrintContextParameters.cs" />
+    <Compile Include="Context\PrintContextScope.cs" />
+    <Compile Include="Context\SaveContext.cs" />
+    <Compile Include="Context\SaveContextParameters.cs" />
+    <Compile Include="Context\SaveContextScope.cs" />
+    <Compile Include="Context\SequenceContext.cs" />
+    <Compile Include="Context\SequenceContextScope.cs" />
+    <Compile Include="Domain\AssemblyStats.cs" />
+    <Compile Include="Domain\ClassConnectorInfo.cs" />
+    <Compile Include="Domain\ClassModelData.cs" />
+    <Compile Include="Domain\ClassTypeInfo.cs" />
+    <Compile Include="Domain\ContentChangedEventArgs.cs" />
+    <Compile Include="Domain\DependencyGraphData.cs" />
+    <Compile Include="Domain\DependencyTypeData.cs" />
+    <Compile Include="Domain\ExtendedObjectInfo.cs" />
+    <Compile Include="Domain\ICallRules.cs" />
+    <Compile Include="Domain\MessageCollection.cs" />
+    <Compile Include="Domain\MessageInfo.cs" />
+    <Compile Include="Domain\MethodCallInfo.cs" />
+    <Compile Include="Domain\NormalizeMethodDefinition.cs" />
+    <Compile Include="Domain\ObjectInfo.cs" />
+    <Compile Include="Domain\ObjectInstanceInfo.cs" />
+    <Compile Include="Domain\ObjectRelationInfo.cs" />
+    <Compile Include="Domain\RelationCollection.cs" />
+    <Compile Include="Domain\SelectionType.cs" />
+    <Compile Include="Domain\ObjectInfoCollection.cs" />
+    <Compile Include="Domain\SequenceData.cs" />
+    <Compile Include="Domain\TypeModifierEnumeration.cs" />
+    <Compile Include="Graphics\Diagram.cs" />
+    <Compile Include="Graphics\DiagramAssociationConnector.cs" />
+    <Compile Include="Graphics\DiagramCallConnector.cs" />
+    <Compile Include="Graphics\DiagramCommands.cs" />
+    <Compile Include="Graphics\DiagramConnector.cs" />
+    <Compile Include="Graphics\DiagramConnectorNode.cs" />
+    <Compile Include="Graphics\DiagramController.cs" />
+    <Compile Include="Graphics\DiagramDocumentPaginator.cs" />
+    <Compile Include="Graphics\DiagramGroup.cs" />
+    <Compile Include="Graphics\DiagramInheritanceConnector.cs" />
+    <Compile Include="Graphics\DiagramModelNode.cs" />
+    <Compile Include="Graphics\DiagramNode.cs" />
+    <Compile Include="Graphics\DiagramRow.cs" />
+    <Compile Include="Graphics\DiagramSequenceNode.cs" />
+    <Compile Include="Graphics\DiagramSupplement.cs" />
+    <Compile Include="Graphics\DiagramUtility.cs" />
+    <Compile Include="Graphics\DiagramViewer.xaml.cs">
+      <DependentUpon>DiagramViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\NodeTypeEnumeration.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Presentation\ClassDiagramRenderer.cs" />
+    <Compile Include="Presentation\IRenderer.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Domain\MethodData.cs" />
+    <Compile Include="Domain\NamespaceData.cs" />
+    <Compile Include="Presentation\PicRenderer.cs" />
+    <Compile Include="Presentation\PngRenderer.cs" />
+    <Compile Include="Presentation\XpsRenderer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\Rules.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Domain\TypeData.cs" />
+    <Compile Include="Presentation\WPFRenderer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Graphics\DiagramViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

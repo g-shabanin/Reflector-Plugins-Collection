@@ -1,0 +1,16 @@
+1. Add field/properties and parameter dependencies
+2. Add Clicking on Netron graph control nodes to navigate
+3. Right click filtering from Netron graph control
+
+V 0.6
+1. Add tooltips
+2. Support to add notes (for each diagram)
+
+----
+
+V 0.8
+1. Support assembly differences (Public API)
+
+V 0.9
+1. Code Refactoring (Plugin based model - like Reflector)
+--> The framework collects all the stats and the plugins make use of that
